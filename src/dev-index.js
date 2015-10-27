@@ -5,7 +5,7 @@ import Subdivide from './index';
 class IframeComponent extends Component {
   render() {
     return (
-      <iframe src="index2.html" frameBorder={'0'} style={{
+      <iframe src="index3.html" frameBorder={'0'} style={{
          width: '100%',
          height: '100%'
       }} />
