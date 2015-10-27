@@ -7,7 +7,9 @@ import {
   SET_SIZE,
   SET_CORNER_DOWN,
   SET_DIVIDER_DOWN,
-  SET_STATE
+  SET_STATE,
+  SET_PANE_PROPS,
+  SET_CORNER_HOVER
 } from '../constants';
 
 import {
@@ -17,7 +19,9 @@ import {
   setSize,
   setCornerDown,
   setDividerDown,
-  deserialize
+  deserialize,
+  setPaneProps,
+  setCornerHover,
 } from '../helpers/LayoutHelper';
 
 import secondPass from '../helpers/secondPass';
@@ -36,7 +40,8 @@ export const Pane = new Record({
   height: undefined,
 
   canSplit: undefined,
-  joinDirection: undefined
+  joinDirection: undefined,
+  props: {}
 });
 
 export const Layout = new Record({
@@ -48,6 +53,7 @@ export const Layout = new Record({
   mode: undefined,
   dividerDown: undefined,
   cornerDown: undefined,
+  cornerHover: undefined,
   width: 800,
   height: 600,
   panes: Map({
@@ -91,17 +97,22 @@ let firstPass = (state, action) => {
   case SET_CORNER_DOWN:
     return setCornerDown(state, action);
 
+  case SET_CORNER_HOVER:
+    return setCornerHover(state, action);
+
   case SET_DIVIDER_DOWN:
     return setDividerDown(state, action);
   case SET_STATE:
     return deserialize(action.state);
+  case SET_PANE_PROPS:
+    return setPaneProps(state, action);
 
   default:
     return state;
   }
 };
 
-export default function layout(state = Layout(), action) {
+export default function subdivide(state = Layout(), action) {
   state = firstPass(state, action);
   state = secondPass(state);
   return state;

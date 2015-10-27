@@ -6,13 +6,23 @@ import {
   SET_BLOCK,
   SET_CORNER_DOWN,
   SET_DIVIDER_DOWN,
-  SET_STATE
+  SET_STATE,
+  SET_PANE_PROPS,
+  SET_CORNER_HOVER
 } from '../constants';
 
 export function setState(state) {
   return {
     type: SET_STATE,
     state
+  };
+}
+
+export function setPaneProps(id, props) {
+  return {
+    type: SET_PANE_PROPS,
+    id,
+    props
   };
 }
 
@@ -54,6 +64,13 @@ export function setBlock(displayBlock){
   return {
     type: SET_BLOCK,
     displayBlock
+  };
+}
+
+export function setCornerHover(cornerHover) {
+  return {
+    type: SET_CORNER_HOVER,
+    cornerHover
   };
 }
 
