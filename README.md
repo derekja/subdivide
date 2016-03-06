@@ -1,10 +1,17 @@
 # Subdivide Layout
 
+[![travis build](https://img.shields.io/travis/philholden/subdivide.svg?style=flat-square)](https://travis-ci.org/philholden/subdivide)
+[![codecov coverage](https://img.shields.io/codecov/c/github/philholden/subdivide.svg?style=flat-square)](https://codecov.io/github/philholden/subdivide)
+[![version](https://img.shields.io/npm/v/subdivide.svg?style=flat-square)](http://npm.im/subdivide)
+[![downloads](https://img.shields.io/npm/dm/subdivide.svg?style=flat-square)](http://npm-stat.com/charts.html?package/subdivide&from=2015-08-01)
+[![CC0 License](https://img.shields.io/npm/l/subdivide.svg?style=flat-square)](https://creativecommons.org/publicdomain/zero/1.0/)
+[![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg?style=flat-square)](https://github.com/semantic-release/semantic-release)
+
 [![Video](http://img.youtube.com/vi/3ePrvrx9otk/0.jpg)](http://www.youtube.com/watch?v=3ePrvrx9otk)
 
 _(Click image to watch video)_
 
-A web application shell for displaying components in panes which can be:
+Split pane layout system for React. Each pane can be subdivided and any widget assigned to any pane allowing users define layout. Panes can be:
 
 * infinitively subdivided
 * subdivided horizontally or vertically
@@ -15,6 +22,19 @@ A web application shell for displaying components in panes which can be:
 When a new pane is created the user can chose which component to display in that pane. The result is an application where the user can decide on an interface that suits their work flow.
 
 It should also be possible to quickly mash up applications out of preexisting parts.
+
+----
+
+## Run Example
+```bash
+git clone git@github.com:philholden/subdivide.git
+npm install
+npm start
+```
+
+Open the following link in a browser:
+
+http://localhost:3000/examples/
 
 ----
 
@@ -56,10 +76,12 @@ class IframeComponent extends Component {
 }
 
 ReactDOM.render(
-  <Subdivide DefaultComponent={IframeComponent} />,
+  <Subdivide DefaultComponent={IframeComponent} iframeSafe={true} />,
   document.getElementById('root')
 );
 ```
+
+NOTE: In Chrome iframes are reloaded whenever a sibling element that appears above them is removed from the DOM. If `iframeSafe` is set to `true` then when a pane is removed it will be replaced by an empty `<div></div>` this will prevent iframes reloading when panes are deleted (i.e. merged).
 
 ## Usage with `connect()`
 
@@ -111,5 +133,3 @@ Subdivide was inspired by [Blender's](http://blender.org) subdividable UI. I hav
 Subdivide uses [Redux](https://github.com/rackt/redux) to manage state. Thanks to [@gaearon](https://github.com/gaearon) for the great library, talks, docs and feedback.
 
 Work began in a hackathon at [NCR Edinburgh](http://ncredinburgh.com). A big thanks to them for allowing it to be open sourced so I can continue to work on it in my own time. NCR is [hiring](http://ncredinburgh.com/jobs/vacancies/java-javascript-software_engineer) if you like React and Redux (and Scotland) they are a great place to work. 
-
-
