@@ -1,12 +1,19 @@
 /*global document:false*/
 import React, { Component } from 'react'
-import { render } from 'react-dom'
+import Provider, { render } from 'react-dom'
+import configureStore from '../src/containers/Subdivide'
 import {
   Router, Route, IndexRoute, Link,
   createMemoryHistory,
   hashHistory,
   browserHistory
 } from 'react-router'
+
+const DevTools = require('./DevTools').default;
+const store = {}; 
+//configureStore(this.props);
+
+
 
 //console.log(require.context('./pages/'), 'hello')
 let pages = require.context('./pages', false, /.*.js$/)
@@ -29,6 +36,7 @@ const Page = props => {
   return (
     <div>
       {props.children}
+       <DevTools />
     </div>
   )
 }
