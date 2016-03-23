@@ -9,7 +9,7 @@ import {
   browserHistory
 } from 'react-router'
 
-const DevTools = require('./DevTools').default;
+
 const store = {}; 
 //configureStore(this.props);
 
@@ -36,7 +36,6 @@ const Page = props => {
   return (
     <div>
       {props.children}
-       <DevTools />
     </div>
   )
 }

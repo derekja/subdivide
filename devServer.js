@@ -14,7 +14,7 @@ let server = require('http').createServer(app)
 let io = require('socket.io')(server)
 
 let compiler = webpack(config)
-let port = 3000
+let port = 3001
 
 app.use(require('webpack-dev-middleware')(compiler, {
   noInfo: true,
