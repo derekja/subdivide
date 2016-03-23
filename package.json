@@ -108,7 +108,8 @@
     }
   },
   "dependencies": {
-    "immutable": "^3.7.4"
+    "immutable": "^3.7.4",
+    "radium": "^0.16.6"
   },
   "release": {
     "debug": false
